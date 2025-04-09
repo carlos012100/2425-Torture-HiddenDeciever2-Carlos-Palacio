@@ -7,22 +7,12 @@ import { weaponData } from "./Data/WeaponData.mjs";
 
 const stoneArray = []
 const weaponsArray = []
-preciousStoneCreate(stoneArray);
-createWeapons(weaponsArray)
 
+preciousStoneCreate(stoneArray);
+
+createWeapons(weaponsArray)
 console.log(weaponsArray)
 
-
-const bow = weaponData[0]
-const blade = weaponData[1]
-const wand = weaponData[2]
-const longbow = weaponData[3]
-const sword = weaponData [4]
-const soulwand = weaponData[5]
-const phonixBow = weaponData[6]
-const crystalSword = weaponData[7]
-const frostwand = weaponData[8]
-const hunterBow = weaponData[9]
 
 
 //CREATION of precious stone objects array
@@ -46,18 +36,30 @@ function preciousStoneCreate(array)
 }  
 function createWeapons(array) {
 
-    
+    let bow = weaponData[0]
+    let blade = weaponData[1]
+    let wand = weaponData[2]
+    let longbow = weaponData[3]
+    let sword = weaponData [4]
+    let soulwand = weaponData[5]
+    let phonixBow = weaponData[6]
+    let crystalSword = weaponData[7]
+    let frostwand = weaponData[8]
+    let hunterBow = weaponData[9]
 
-    const bow = new Weapon(bow.name, bow.description, bow.numDieDamage, bow.type, bow.quality);
-    const blade = new Weapon(blade.name, blade,description,blade.numDieDamage,blade.type, blade.quality)
-    const wand = new Weapon(wand.name, wand.description, wand.numDieDamage, wand.type, wand.quality)
-    const longbow = new Weapon(longbow.name, longbow.description, longbow.numDieDamage, longbow.type, longbow.quality)
-    const sword = new Weapon(sword.name, sword.description, sword.numDieDamage, sword.type, sword.quality)
-    const soulwand = new Weapon(soulwand.name, soulwand.description, soulwand.numDieDamage, soulwand.type. soulwand.quality)
-    const phonixBow = new Weapon(phonixBow.name, phonixBow.description, phonixBow.numDieDamage, phonixBow.type, phonixBow.quality)
-    const crystalSword = new Weapon(crystalSword.name, crystalSword.description, crystalSword.numDieDamage, crystalSword.type, crystalSword.quality)
-    const frostwand = new Weapon(frostwand.name, frostwand.description, frostwand.numDieDamage, frostwand.type, frostwand.quality)
-    const hunterBow = new Weapon(hunterBow.name, hunterBow.description, hunterBow.numDieDamage, hunterBow.type, hunterBow.quality)
+
+
+    bow = new Weapon(bow.name, bow.description, bow.num_die_damage, bow.type, bow.quality);
+    blade = new Weapon(blade.name, blade.description, blade.num_die_damage,blade.type, blade.quality)
+    wand = new Weapon(wand.name, wand.description, wand.num_die_damage, wand.type, wand.quality)
+    longbow = new Weapon(longbow.name, longbow.description, longbow.num_die_damage, longbow.type, longbow.quality)
+    sword = new Weapon(sword.name, sword.description, sword.num_die_damage, sword.type, sword.quality)
+    soulwand = new Weapon(soulwand.name, soulwand.description, soulwand.num_die_damage, soulwand.type, soulwand.quality)
+    phonixBow = new Weapon(phonixBow.name, phonixBow.description, phonixBow.num_die_damage, phonixBow.type, phonixBow.quality)
+    crystalSword = new Weapon(crystalSword.name, crystalSword.description, crystalSword.num_die_damage, crystalSword.type, crystalSword.quality)
+    frostwand = new Weapon(frostwand.name, frostwand.description, frostwand.num_die_damage, frostwand.type, frostwand.quality)
+    hunterBow = new Weapon(hunterBow.name, hunterBow.description, hunterBow.num_die_damage, hunterBow.type, hunterBow.quality)
+
 
     array.push(bow, blade, wand, longbow, sword, soulwand, phonixBow, crystalSword, frostwand, hunterBow);
 
