@@ -14,9 +14,15 @@ createWeapons(weaponsArray)
 
 //Creation of Characters 
 characterCreate(charactersArray)
+console.log(charactersArray[0].occupation)
 
 //we equipp the characters
 
+equippedWeapons (charactersArray, weaponsArray);
+
+buyStones (stoneArray, charactersArray)
+
+showGoldLeft (charactersArray)
 
 
 
@@ -82,11 +88,123 @@ function characterCreate(array)
     let orlin = characterData[3]
     let rurik = characterData[4]
 
-    kaelen = new Weapon(kaelen.name, kaelen.occupation, kaelen.gold, kaelen.weapon, kaelen.pouch, kaelen.life)
-    braga = new Weapon(braga.name, braga.occupation, braga.gold, braga.weapon, braga.pouch, braga.life)
-    willa = new Weapon(willa.name, willa.occupation, willa.gold, willa.weapon, willa.pouch, willa.life)
-    orlin = new Weapon(orlin.name, orlin.occupation, orlin.gold, orlin.weapon, orlin.pouch, orlin.life)
-    rurik = new Weapon(rurik.name, rurik.occupation, rurik.gold, rurik.weapon, rurik.pouch, rurik.life)
+    kaelen = new Character(kaelen.name, kaelen.occupation, kaelen.gold, kaelen.weapon, kaelen.pouch, kaelen.life)
+    braga = new Character(braga.name, braga.occupation, braga.gold, braga.weapon, braga.pouch, braga.life)
+    willa = new Character(willa.name, willa.occupation, willa.gold, willa.weapon, willa.pouch, willa.life)
+    orlin = new Character(orlin.name, orlin.occupation, orlin.gold, orlin.weapon, orlin.pouch, orlin.life)
+    rurik = new Character(rurik.name, rurik.occupation, rurik.gold, rurik.weapon, rurik.pouch, rurik.life)
 
     array.push(kaelen, braga, willa, orlin, rurik);
 }
+function equippedWeapons (charactersArray, weaponsArray)
+{
+    // let  weaponData[0]
+    // let blade = weaponData[1]
+    // let wand = weaponData[2]
+    // let longbow = weaponData[3]
+    // let sword = weaponData [4]
+    // let soulwand = weaponData[5]
+    // let phonixBow = weaponData[6]
+    // let crystalSword = weaponData[7]
+    // let frostwand = weaponData[8]
+    // let hunterBow = weaponData[9]
+
+    for (let i = 0; i < charactersArray.length; i++)
+    {
+        for (let j = 0; j < weaponsArray.length; j++)
+        {
+            let randomweapon = Math.floor(Math.random()* weaponsArray.length)
+
+            if(( charactersArray[i].occupation == 'thug'
+            )
+                && weaponsArray[j].name === 'Shadowfang Bow'
+                || weaponsArray[j].name === 'Ironwood Longbow'
+                || weaponsArray[j].name === 'Phoenix Bow'
+                || weaponsArray[j].name === 'Dreadhunter Bow'
+            ){
+                
+                if(weaponsArray[randomweapon] = weaponsArray[j])
+                {
+                    charactersArray[i].weapon = weaponsArray[randomweapon]
+    
+                }
+
+            }
+            if (charactersArray[i].occupation === 'priest' && weaponsArray.type === 'arcane')
+                {
+                    charactersArray[i].weapon = weaponsArray[randomweapon]
+
+                }
+             if ((charactersArray[i].occupation === 'peasant') && ( weaponsArray[j].name === 'Eclipse Wand'
+                 || weaponsArray[j].name === 'Soulpiercer Wand'
+                 || weaponsArray[j].name === 'Frostshard Wand'))
+             {
+                if(weaponsArray[randomweapon] = weaponsArray[j])
+                    {
+                        charactersArray[i].weapon = weaponsArray[randomweapon]
+        
+                    }
+
+            }
+        }
+      
+           
+             
+
+         }
+         
+        
+        }
+        function buyStones(stoneArray, charactersArray)
+        {
+            for (let i = 0; i < charactersArray.length; i++)
+                 {
+                    console.log("thg")
+                    for (let j = 0; j < stoneArray.length; j++)
+                    {
+                        let stone =Math.floor(Math.random()* weaponsArray.length)
+
+                        if (charactersArray[i].gold >= stoneArray[stone].value)
+                        {
+                            charactersArray[i].pouch.push(stoneArray[stone])
+                            console.log(charactersArray[i].pouch)
+
+                            charactersArray[i].gold -= stoneArray[stone].value;
+                        }
+                    }
+                 }
+        }
+        function showGoldLeft (characterArray)
+        {
+            for (let i = 0; i < characterArray.length; i++)
+            {
+                console.log("Character name: " + characterArray[i].name);
+                console.log("Gold left: " + characterArray[i].gold)
+                console.log(" ")
+            }
+        }
+
+        function showCharacters (characterArray)
+        {
+            for (let i = 0; i < charactersArray.length; i++)
+            {
+                console.log("Character List")
+                console.log("-----------")
+                console.log("")
+                console.log("Occupation: " + characterArray[i].occupation)
+                console.log("Gold: " + characterArray[i].gold)
+                console.log("-----------")
+                console.log("WEAPON")
+                console.log("-----------")
+                console.log("Name: " + characterArray[i].weapon)
+                console.log("Description: " + characterArray[i].description)
+                console.log("Num dies of damage: " + characterArray[i].num_die_damage)
+                console.log("Type: " + characterArray[i].type)
+                console.log("Quality: " + characterArray[i].quality)
+                console.log("------------")
+                console.log("Pouch")
+                console.log("------------")
+                console.log(characterArray[i].pouch + ":" + characterArray[i].gold)
+            }
+        }
+
