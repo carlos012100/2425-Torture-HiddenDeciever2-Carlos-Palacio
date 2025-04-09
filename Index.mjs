@@ -6,7 +6,11 @@ import { weaponData } from "./Data/WeaponData.mjs";
 // import { characterData } from "./Data/characterData.mjs";
 
 const stoneArray = []
+const weaponsArray = []
 preciousStoneCreate(stoneArray);
+createWeapons(weaponsArray)
+
+console.log(weaponsArray)
 
 
 const bow = weaponData[0]
@@ -40,7 +44,7 @@ function preciousStoneCreate(array)
 
 
 }  
-function createWeapons() {
+function createWeapons(array) {
 
     
 
@@ -54,6 +58,8 @@ function createWeapons() {
     const crystalSword = new Weapon(crystalSword.name, crystalSword.description, crystalSword.numDieDamage, crystalSword.type, crystalSword.quality)
     const frostwand = new Weapon(frostwand.name, frostwand.description, frostwand.numDieDamage, frostwand.type, frostwand.quality)
     const hunterBow = new Weapon(hunterBow.name, hunterBow.description, hunterBow.numDieDamage, hunterBow.type, hunterBow.quality)
+
+    array.push(bow, blade, wand, longbow, sword, soulwand, phonixBow, crystalSword, frostwand, hunterBow);
 
 
 }
