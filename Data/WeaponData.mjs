@@ -1,4 +1,4 @@
-[
+export const weaponData = [
     {
        "name":"Shadowfang Bow",
        "description":"A bow crafted from the bones of ancient dragons, its arrows never miss their mark.",

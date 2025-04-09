@@ -1,3 +1,4 @@
+export const preciousData =
 [
     {
        "name":"Starfire Ruby",
