@@ -1,4 +1,4 @@
-[
+export const characterData = [
     {
       "name": "Kaelen Fireheart",
       "occupation": "priest",

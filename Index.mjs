@@ -3,15 +3,21 @@ import PreciousStone from "./PreciousStone.mjs";
 import Weapon from "./Weapon.mjs";
 import {preciousData} from "./Data/PreciousStoneData.mjs";
 import { weaponData } from "./Data/WeaponData.mjs";
-// import { characterData } from "./Data/characterData.mjs";
+import { characterData } from "./Data/CharacterData.mjs";
 
 const stoneArray = []
 const weaponsArray = []
-
+const charactersArray = []
 preciousStoneCreate(stoneArray);
 
 createWeapons(weaponsArray)
-console.log(weaponsArray)
+
+//Creation of Characters 
+characterCreate(charactersArray)
+
+//we equipp the characters
+
+
 
 
 
@@ -34,6 +40,7 @@ function preciousStoneCreate(array)
 
 
 }  
+//Creation of weapons 
 function createWeapons(array) {
 
     let bow = weaponData[0]
@@ -64,4 +71,22 @@ function createWeapons(array) {
     array.push(bow, blade, wand, longbow, sword, soulwand, phonixBow, crystalSword, frostwand, hunterBow);
 
 
+}
+
+//Creation of characters 
+function characterCreate(array)
+{
+    let kaelen =characterData[0]
+    let braga = characterData[1]
+    let willa = characterData[2]
+    let orlin = characterData[3]
+    let rurik = characterData[4]
+
+    kaelen = new Weapon(kaelen.name, kaelen.occupation, kaelen.gold, kaelen.weapon, kaelen.pouch, kaelen.life)
+    braga = new Weapon(braga.name, braga.occupation, braga.gold, braga.weapon, braga.pouch, braga.life)
+    willa = new Weapon(willa.name, willa.occupation, willa.gold, willa.weapon, willa.pouch, willa.life)
+    orlin = new Weapon(orlin.name, orlin.occupation, orlin.gold, orlin.weapon, orlin.pouch, orlin.life)
+    rurik = new Weapon(rurik.name, rurik.occupation, rurik.gold, rurik.weapon, rurik.pouch, rurik.life)
+
+    array.push(kaelen, braga, willa, orlin, rurik);
 }
