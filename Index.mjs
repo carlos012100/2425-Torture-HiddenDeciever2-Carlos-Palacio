@@ -14,16 +14,20 @@ createWeapons(weaponsArray)
 
 //Creation of Characters 
 characterCreate(charactersArray)
-console.log(charactersArray[0].occupation)
 
 //we equipp the characters
 
 equippedWeapons (charactersArray, weaponsArray);
 
+
 buyStones (stoneArray, charactersArray)
 
 showGoldLeft (charactersArray)
 
+showCharacters (charactersArray)
+
+
+fightSim();
 
 
 
@@ -98,68 +102,82 @@ function characterCreate(array)
 }
 function equippedWeapons (charactersArray, weaponsArray)
 {
-    // let  weaponData[0]
-    // let blade = weaponData[1]
-    // let wand = weaponData[2]
-    // let longbow = weaponData[3]
-    // let sword = weaponData [4]
-    // let soulwand = weaponData[5]
-    // let phonixBow = weaponData[6]
-    // let crystalSword = weaponData[7]
-    // let frostwand = weaponData[8]
-    // let hunterBow = weaponData[9]
 
-    for (let i = 0; i < charactersArray.length; i++)
+let rangedWeapons = [ weaponsArray[0], weaponsArray[3], weaponsArray[6], weaponsArray[9] ]
+let meleeWeapons = [ weaponsArray[1], weaponsArray[4], weaponsArray[7] ]
+let magicWeapons = [ weaponsArray[2], weaponsArray[5], weaponsArray[8] ]
+
+for (let i = 0; i < charactersArray.length; i++){
+
+    if(charactersArray[i].occupation === "thug")
     {
+
         for (let j = 0; j < weaponsArray.length; j++)
         {
-            let randomweapon = Math.floor(Math.random()* weaponsArray.length)
+            let randomWeapon = weaponsArray[Math.floor(Math.random() * weaponsArray.length)]
 
-            if(( charactersArray[i].occupation == 'thug'
-            )
-                && weaponsArray[j].name === 'Shadowfang Bow'
-                || weaponsArray[j].name === 'Ironwood Longbow'
-                || weaponsArray[j].name === 'Phoenix Bow'
-                || weaponsArray[j].name === 'Dreadhunter Bow'
-            ){
-                
-                if(weaponsArray[randomweapon] = weaponsArray[j])
+            if (randomWeapon.name === rangedWeapons[0].name 
+                || randomWeapon.name === rangedWeapons[1].name || randomWeapon.name === rangedWeapons[2].name 
+                || randomWeapon.name === rangedWeapons[3].name)
                 {
-                    charactersArray[i].weapon = weaponsArray[randomweapon]
+                    charactersArray[i].weapon = randomWeapon;
+                    console.log(charactersArray[i].weapon)
+
+                    weaponsArray.splice(j, 1)
+                    --j;
+                    break;
+                }
+  
+        }
+    }
+
+    if (charactersArray[i].occupation === "priest") {
+
+        for (let j = 0; j < weaponsArray.length; j++)
+        {
+            let randomWeapon = weaponsArray[Math.floor(Math.random() * weaponsArray.length)]
+
+            if(randomWeapon.type === "arcane")
+            {
+                charactersArray[i].weapon = randomWeapon;
+                console.log(charactersArray[i].weapon)
+
+                weaponsArray.splice(j, 1)
+                --j;
+                break;
+            }
+        }
+    }
+        if (charactersArray[i].occupation === "peasant") {
+            for (let j = 0; j < weaponsArray.length; j++)
+            {
+                let randomWeapon = weaponsArray[Math.floor(Math.random() * weaponsArray.length)]
+                console.log(randomWeapon)
+                console.log(weaponsArray[2].name)
+                console.log("see: " + weaponsArray[2].name) 
+
+
+                if((randomWeapon.type === "arcane") && (randomWeapon.name === magicWeapons[1].name || randomWeapon.name === magicWeapons[2].name || randomWeapon.name === magicWeapons[0].name)){
+                    charactersArray[i].weapon = randomWeapon
+
+                    console.log(charactersArray[i].weapon)
+                    console.log(randomWeapon)
+                    weaponsArray.splice(j, 1)
+                    --j;
+                    break;
+            }
+        }
+
+    }
     
-                }
+ }
+}
 
-            }
-            if (charactersArray[i].occupation === 'priest' && weaponsArray.type === 'arcane')
-                {
-                    charactersArray[i].weapon = weaponsArray[randomweapon]
-
-                }
-             if ((charactersArray[i].occupation === 'peasant') && ( weaponsArray[j].name === 'Eclipse Wand'
-                 || weaponsArray[j].name === 'Soulpiercer Wand'
-                 || weaponsArray[j].name === 'Frostshard Wand'))
-             {
-                if(weaponsArray[randomweapon] = weaponsArray[j])
-                    {
-                        charactersArray[i].weapon = weaponsArray[randomweapon]
-        
-                    }
-
-            }
-        }
-      
-           
-             
-
-         }
-         
-        
-        }
         function buyStones(stoneArray, charactersArray)
         {
             for (let i = 0; i < charactersArray.length; i++)
                  {
-                    console.log("thg")
+                    console.log("thug")
                     for (let j = 0; j < stoneArray.length; j++)
                     {
                         let stone =Math.floor(Math.random()* weaponsArray.length)
@@ -184,27 +202,78 @@ function equippedWeapons (charactersArray, weaponsArray)
             }
         }
 
-        function showCharacters (characterArray)
+        function showCharacters (charactersArray)
         {
+            console.log("Character List")
+            console.log("-----------")
+            console.log("")
             for (let i = 0; i < charactersArray.length; i++)
             {
-                console.log("Character List")
-                console.log("-----------")
-                console.log("")
-                console.log("Occupation: " + characterArray[i].occupation)
-                console.log("Gold: " + characterArray[i].gold)
+                console.log("Name: " + charactersArray[i].name)
+                console.log("-------------")
+                console.log("Occupation: " + charactersArray[i].occupation)
+                console.log("Gold: " + charactersArray[i].gold)
                 console.log("-----------")
                 console.log("WEAPON")
                 console.log("-----------")
-                console.log("Name: " + characterArray[i].weapon)
-                console.log("Description: " + characterArray[i].description)
-                console.log("Num dies of damage: " + characterArray[i].num_die_damage)
-                console.log("Type: " + characterArray[i].type)
-                console.log("Quality: " + characterArray[i].quality)
+                console.log("Name: " + charactersArray[i].weapon.name)
+                console.log("Description: " + charactersArray[i].weapon.description)
+                console.log("Num dies of damage: " + charactersArray[i].weapon.numDieDamage)
+                console.log("Type: " + charactersArray[i].weapon.type)
+                console.log("Quality: " + charactersArray[i].weapon.quality)
                 console.log("------------")
                 console.log("Pouch")
                 console.log("------------")
-                console.log(characterArray[i].pouch + ":" + characterArray[i].gold)
+                for (let j = 0; j < charactersArray[i].pouch.length; j++)
+                {
+                    console.log(charactersArray[i].pouch[j].name + ":" + charactersArray[i].gold)
+                }
             }
         }
 
+        function fightSim()
+        {
+            let attacker = charactersArray[Math.floor(Math.random() * charactersArray.length)]
+
+            let defender = charactersArray[Math.floor(Math.random() * charactersArray.length)]
+
+            //before attack
+            console.log("")
+            console.log("Before attack")
+            console.log("------------")
+            console.log("Attacker")
+            console.log("name: " + attacker.name)
+            console.log("life: " + attacker.life)
+            console.log("weapon: " + attacker.weapon.name)
+            console.log("weapon quality: " + attacker.weapon.quality)
+            console.log("------------")
+            console.log("Defender")
+            console.log("name: " + defender.name)
+            console.log("life: " + defender.life)
+            console.log("weapon: " + defender.weapon.name)
+            console.log("quality: " + defender.weapon.quality)
+
+            //while attacking 
+
+            let damage = attacker.attack(defender)
+
+            console.log(attacker.name + " attacks " + defender.name + " and inflicts " + damage + " of damage")
+
+            //After attack
+
+            console.log("")
+            console.log("After attack")
+            console.log("------------")
+            console.log("Attacker")
+            console.log("name: " + attacker.name)
+            console.log("life: " + attacker.life)
+            console.log("weapon: " + attacker.weapon.name)
+            console.log("weapon quality: " + attacker.weapon.quality)
+            console.log("------------")
+            console.log("Defender")
+            console.log("name: " + defender.name)
+            console.log("life: " + defender.life)
+            console.log("weapon: " + defender.weapon.name)
+            console.log("quality: " + defender.weapon.quality)
+
+        }
